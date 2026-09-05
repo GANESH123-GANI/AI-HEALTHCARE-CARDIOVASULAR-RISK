@@ -395,7 +395,13 @@ button[data-testid="stBaseButton-primary"]:hover {
 .header-actions-container button,
 .header-actions-container div[data-testid="stPopover"] button,
 .header-actions-container button[data-testid="stBaseButton-secondary"],
-.header-actions-container button[data-testid="stPopoverButton"] {
+.header-actions-container button[data-testid="stPopoverButton"],
+div[data-testid="column"]:has(.alert-btn-marker) button,
+div[data-testid="column"]:has(.alert-btn-marker) [data-testid="stPopover"] button,
+div[data-testid="column"]:has(.alert-btn-marker) button[data-testid="stBaseButton-secondary"],
+div[data-testid="column"]:has(.alert-btn-marker) button[data-testid="stPopoverButton"],
+div[data-testid="column"]:has(.theme-btn-marker) button,
+div[data-testid="column"]:has(.theme-btn-marker) button[data-testid="stBaseButton-secondary"] {
     background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
     background-color: #10b981 !important;
     border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
@@ -410,14 +416,22 @@ button[data-testid="stBaseButton-primary"]:hover {
 }
 
 .header-actions-container button *,
-.header-actions-container div[data-testid="stPopover"] button * {
+.header-actions-container div[data-testid="stPopover"] button *,
+div[data-testid="column"]:has(.alert-btn-marker) button *,
+div[data-testid="column"]:has(.alert-btn-marker) button p,
+div[data-testid="column"]:has(.alert-btn-marker) button span,
+div[data-testid="column"]:has(.theme-btn-marker) button *,
+div[data-testid="column"]:has(.theme-btn-marker) button p,
+div[data-testid="column"]:has(.theme-btn-marker) button span {
     color: #ffffff !important;
     fill: #ffffff !important;
     font-weight: 700 !important;
 }
 
 .header-actions-container button:hover,
-.header-actions-container div[data-testid="stPopover"] button:hover {
+.header-actions-container div[data-testid="stPopover"] button:hover,
+div[data-testid="column"]:has(.alert-btn-marker) button:hover,
+div[data-testid="column"]:has(.theme-btn-marker) button:hover {
     background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
     background-color: #34d399 !important;
     border-color: #ffffff !important;

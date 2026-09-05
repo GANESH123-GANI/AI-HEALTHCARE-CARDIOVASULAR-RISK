@@ -23,9 +23,74 @@ def render_header(alert_count: int, theme: dict):
         """)
 
     with header_col2:
-        render_html("<div class='header-actions-container'>")
+        render_html("""
+            <div class='header-actions-container'>
+            <style>
+            div[data-testid="column"]:has(.alert-btn-marker) button,
+            div[data-testid="column"]:has(.alert-btn-marker) [data-testid="stPopover"] button,
+            div[data-testid="column"]:has(.alert-btn-marker) button[data-testid="stBaseButton-secondary"],
+            div[data-testid="column"]:has(.alert-btn-marker) button[data-testid="stPopoverButton"] {
+                background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+                background-color: #10b981 !important;
+                border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+                color: #ffffff !important;
+                border-radius: 14px !important;
+                font-family: 'Outfit', sans-serif !important;
+                font-weight: 700 !important;
+                font-size: 0.96rem !important;
+                padding: 0.65rem 1.2rem !important;
+                box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4) !important;
+                transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+            }
+            div[data-testid="column"]:has(.alert-btn-marker) button *,
+            div[data-testid="column"]:has(.alert-btn-marker) button p,
+            div[data-testid="column"]:has(.alert-btn-marker) button span {
+                color: #ffffff !important;
+                fill: #ffffff !important;
+                font-weight: 700 !important;
+            }
+            div[data-testid="column"]:has(.alert-btn-marker) button:hover {
+                background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+                background-color: #34d399 !important;
+                border-color: #ffffff !important;
+                color: #ffffff !important;
+                transform: translateY(-2px) scale(1.02) !important;
+                box-shadow: 0 8px 26px rgba(16, 185, 129, 0.6) !important;
+            }
+            div[data-testid="column"]:has(.theme-btn-marker) button,
+            div[data-testid="column"]:has(.theme-btn-marker) button[data-testid="stBaseButton-secondary"] {
+                background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+                background-color: #10b981 !important;
+                border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+                color: #ffffff !important;
+                border-radius: 14px !important;
+                font-family: 'Outfit', sans-serif !important;
+                font-weight: 700 !important;
+                font-size: 0.96rem !important;
+                padding: 0.65rem 1.2rem !important;
+                box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4) !important;
+                transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+            }
+            div[data-testid="column"]:has(.theme-btn-marker) button *,
+            div[data-testid="column"]:has(.theme-btn-marker) button p,
+            div[data-testid="column"]:has(.theme-btn-marker) button span {
+                color: #ffffff !important;
+                fill: #ffffff !important;
+                font-weight: 700 !important;
+            }
+            div[data-testid="column"]:has(.theme-btn-marker) button:hover {
+                background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+                background-color: #34d399 !important;
+                border-color: #ffffff !important;
+                color: #ffffff !important;
+                transform: translateY(-2px) scale(1.02) !important;
+                box-shadow: 0 8px 26px rgba(16, 185, 129, 0.6) !important;
+            }
+            </style>
+        """)
         h_act1, h_act2, h_act3 = st.columns([1.1, 1.1, 1.1])
         with h_act1:
+            render_html("<span class='alert-btn-marker' style='display:none;'></span>")
             with st.popover(f"🚨 Alerts ({alert_count})", use_container_width=True):
                 st.markdown("#### 🔔 Clinical Biomarker Alerts")
                 if alert_count == 0:
@@ -40,6 +105,7 @@ def render_header(alert_count: int, theme: dict):
                 if st.button("Acknowledge All", use_container_width=True):
                     st.toast("Alerts acknowledged.", icon="✅")
         with h_act2:
+            render_html("<span class='theme-btn-marker' style='display:none;'></span>")
             theme_btn_label = "☀️ Light" if st.session_state.dark_mode else "🌙 Dark"
             if st.button(theme_btn_label, key="header_theme_toggle_btn", help="Switch between Dark and Light mode", use_container_width=True):
                 st.session_state.dark_mode = not st.session_state.dark_mode
