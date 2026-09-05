@@ -1,3 +1,4 @@
+import io
 import datetime
 import shap
 import numpy as np
@@ -108,7 +109,10 @@ def render_analytics(pred_results: dict, model, theme: dict):
                         pass
             
             plt.tight_layout()
-            st.pyplot(fig_shap, transparent=True)
+            buf = io.BytesIO()
+            fig_shap.savefig(buf, format="png", transparent=True, dpi=200, bbox_inches="tight")
+            buf.seek(0)
+            st.image(buf, use_container_width=True)
             plt.close(fig_shap)
         except Exception as e:
             st.warning(f"Could not render SHAP waterfall plot: {e}")
