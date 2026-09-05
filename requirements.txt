@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+shap
+lime
+plotly
+fpdf2
+streamlit-option-menu
+streamlit-lottie
