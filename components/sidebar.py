@@ -50,6 +50,23 @@ def render_sidebar(theme: dict):
                                 sidebar.setAttribute('aria-expanded', 'false');
                             }
                         }
+
+                        // On mobile, clicking outside the open drawer automatically closes it
+                        if (window.innerWidth <= 768) {
+                            const sidebar = pDoc.querySelector('section[data-testid="stSidebar"]');
+                            if (sidebar && sidebar.getAttribute('aria-expanded') === 'true') {
+                                const insideSidebar = e.target.closest('section[data-testid="stSidebar"]');
+                                const isTrigger = e.target.closest('[data-testid="stExpandSidebarButton"]')
+                                               || e.target.closest('[data-testid="stSidebarCollapsedControl"]');
+                                if (!insideSidebar && !isTrigger) {
+                                    sidebar.setAttribute('aria-expanded', 'false');
+                                    const closeBtn = pDoc.querySelector('[data-testid="stSidebarCollapseButton"] button')
+                                                  || pDoc.querySelector('button[aria-label="Collapse sidebar"]')
+                                                  || pDoc.querySelector('button[aria-label="Close sidebar"]');
+                                    if (closeBtn) closeBtn.click();
+                                }
+                            }
+                        }
                     }, true);
 
                 } catch(err) {}

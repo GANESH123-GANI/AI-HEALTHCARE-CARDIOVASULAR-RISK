@@ -45,11 +45,29 @@ header[data-testid="stHeader"] * {
     pointer-events: auto !important;
 }
 
-/* Double Right Arrows Expand Button (Absolute Positioning) */
-[data-testid="stExpandSidebarButton"],
+/* Double Right Arrows Expand Button & Collapsed Control */
+[data-testid="stSidebarCollapsedControl"] {
+    visibility: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    top: 14px !important;
+    left: 14px !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] button,
 button[data-testid="stExpandSidebarButton"],
-[data-testid="stSidebarCollapsedControl"],
-button[aria-label="Expand sidebar"] {
+[data-testid="stExpandSidebarButton"],
+button[aria-label="Expand sidebar"],
+button[aria-label="Open sidebar"] {
     visibility: visible !important;
     display: flex !important;
     align-items: center !important;
@@ -59,21 +77,17 @@ button[aria-label="Expand sidebar"] {
     border: 2px solid var(--primary-blue) !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 16px var(--glow-color) !important;
-    position: absolute !important;
-    top: 14px !important;
-    left: 14px !important;
-    width: 42px !important;
-    height: 42px !important;
+    width: 40px !important;
+    height: 40px !important;
     transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-    z-index: 999999 !important;
     cursor: pointer !important;
     pointer-events: auto !important;
     opacity: 1 !important;
 }
 
+[data-testid="stSidebarCollapsedControl"] button:hover,
 [data-testid="stExpandSidebarButton"]:hover,
 button[data-testid="stExpandSidebarButton"]:hover,
-[data-testid="stSidebarCollapsedControl"]:hover,
 button[aria-label="Expand sidebar"]:hover {
     border-color: var(--primary-blue) !important;
     background: var(--secondary-hover-bg) !important;
@@ -91,7 +105,7 @@ button[aria-label="Expand sidebar"]:hover {
     fill: var(--text-main) !important;
     stroke: var(--text-main) !important;
     color: var(--text-main) !important;
-    font-size: 24px !important;
+    font-size: 22px !important;
     pointer-events: none !important;
 }
 
@@ -170,31 +184,35 @@ h4 {
     color: var(--text-main) !important;
 }
 
-/* Clean Absolute Overlay Sidebar */
+/* Clean Overlay Sidebar */
 [data-testid="stSidebar"] {
-    position: absolute !important;
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     bottom: 0 !important;
     height: 100vh !important;
     min-height: 100vh !important;
     background-color: var(--sidebar-bg) !important;
-    border-right: 1px solid var(--card-border) !important;
-    box-shadow: 8px 0 35px var(--glass-shadow) !important;
     z-index: 100000 !important;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.3s ease !important;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.3s ease, box-shadow 0.3s ease !important;
 }
 
+/* Open / Expanded State */
 [data-testid="stSidebar"][aria-expanded="true"] {
     transform: translateX(0) !important;
     min-width: 310px !important;
     max-width: 340px !important;
+    width: 320px !important;
     visibility: visible !important;
     pointer-events: auto !important;
+    border-right: 1px solid var(--card-border) !important;
+    box-shadow: 8px 0 35px var(--glass-shadow) !important;
 }
 
+/* Closed / Collapsed State - Completely hidden off-canvas with NO borders or shadows */
+[data-testid="stSidebar"]:not([aria-expanded="true"]),
 [data-testid="stSidebar"][aria-expanded="false"] {
-    transform: translateX(-100%) !important;
+    transform: translateX(-120%) !important;
     min-width: 0 !important;
     max-width: 0 !important;
     width: 0 !important;
@@ -202,6 +220,9 @@ h4 {
     pointer-events: none !important;
     border: none !important;
     box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
 [data-testid="stSidebarUserContent"] {
@@ -745,7 +766,8 @@ div[data-testid="stRadio"] label span {
 }
 
 /* Responsive Grid Containers */
-.header-main-grid [data-testid="stHorizontalBlock"] {
+.header-main-grid > div > [data-testid="stHorizontalBlock"],
+.header-main-grid [data-testid="stHorizontalBlock"]:first-child {
     display: grid !important;
     grid-template-columns: 2.5fr 1.8fr !important;
     gap: 14px !important;
@@ -753,7 +775,8 @@ div[data-testid="stRadio"] label span {
 }
 
 @media (max-width: 900px) {
-    .header-main-grid [data-testid="stHorizontalBlock"] {
+    .header-main-grid > div > [data-testid="stHorizontalBlock"],
+    .header-main-grid [data-testid="stHorizontalBlock"]:first-child {
         grid-template-columns: 1fr !important;
     }
 }
@@ -850,28 +873,64 @@ div[data-testid="stRadio"] label span {
 /* Mobile Devices & Small Tablets (max-width: 768px) */
 @media (max-width: 768px) {
     .block-container {
-        padding-top: 4.4rem !important;
+        padding-top: 1.2rem !important;
         padding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
         max-width: 100% !important;
     }
 
-    /* Keep absolute double right arrow button from covering content */
-    [data-testid="stSidebarCollapsedControl"],
-    [data-testid="stExpandSidebarButton"],
-    button[data-testid="stExpandSidebarButton"] {
-        top: 10px !important;
-        left: 10px !important;
-        width: 40px !important;
-        height: 40px !important;
+    /* Shift header right on mobile so the expand button never overlaps the logo */
+    .header-main-grid {
+        padding-left: 52px !important;
     }
 
-    /* Sidebar becomes touch drawer on mobile */
+    /* Keep fixed double right arrow button properly positioned */
+    [data-testid="stSidebarCollapsedControl"] {
+        top: 14px !important;
+        left: 10px !important;
+    }
+
+    [data-testid="stSidebarCollapsedControl"] button,
+    [data-testid="stExpandSidebarButton"],
+    button[data-testid="stExpandSidebarButton"] {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    /* Collapsed sidebar is completely hidden on mobile with no overlapping strips */
+    [data-testid="stSidebar"]:not([aria-expanded="true"]),
+    [data-testid="stSidebar"][aria-expanded="false"] {
+        display: none !important;
+        transform: translateX(-120%) !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    /* Sidebar becomes full touch drawer when expanded on mobile */
     [data-testid="stSidebar"][aria-expanded="true"] {
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        height: 100vh !important;
         min-width: unset !important;
-        width: 84vw !important;
+        width: 82vw !important;
         max-width: 320px !important;
-        box-shadow: 8px 0 35px rgba(0, 0, 0, 0.6) !important;
+        box-shadow: 12px 0 45px rgba(0, 0, 0, 0.85) !important;
+        z-index: 9999999 !important;
+    }
+
+    /* Header action buttons (Alerts, Theme, Doctor badge) remain in 1 clean row */
+    .header-actions-container [data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns: 1.15fr 1fr 1fr !important;
+        gap: 6px !important;
+        align-items: center !important;
     }
 
     /* Responsive Typography */
@@ -913,8 +972,11 @@ div[data-testid="stRadio"] label span {
         border-radius: 18px !important;
     }
 
+    /* Navigation tabs 2 columns on mobile */
     .top-nav-container [data-testid="stHorizontalBlock"] {
+        display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
     }
 
     .export-actions-grid [data-testid="stHorizontalBlock"] {
@@ -952,9 +1014,40 @@ div[data-testid="stRadio"] label span {
 /* Compact Mobile Screens (max-width: 480px) */
 @media (max-width: 480px) {
     .block-container {
-        padding-top: 4.2rem !important;
+        padding-top: 1rem !important;
         padding-left: 0.5rem !important;
         padding-right: 0.5rem !important;
+    }
+
+    .header-main-grid {
+        padding-left: 48px !important;
+    }
+
+    .header-main-grid h1 {
+        font-size: 1.2rem !important;
+    }
+
+    .header-main-grid p {
+        font-size: 0.72rem !important;
+    }
+
+    .pulse-badge {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        font-size: 20px !important;
+    }
+
+    /* Keep header action buttons neat in compact mobile */
+    .header-actions-container [data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns: 1.15fr 1fr 1fr !important;
+        gap: 4px !important;
+    }
+
+    .header-actions-container button {
+        padding: 0.45rem 0.6rem !important;
+        font-size: 0.8rem !important;
     }
 
     .kpi-row-container [data-testid="stHorizontalBlock"] {
@@ -962,7 +1055,9 @@ div[data-testid="stRadio"] label span {
     }
 
     .top-nav-container [data-testid="stHorizontalBlock"] {
-        grid-template-columns: 1fr !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
     }
 
     .export-actions-grid [data-testid="stHorizontalBlock"] {
