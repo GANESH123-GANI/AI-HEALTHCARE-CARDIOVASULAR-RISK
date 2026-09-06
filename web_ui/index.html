@@ -14,6 +14,10 @@
   <!-- Chart.js for interactive analytics -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <!-- Animate.css & WOW.js for scroll-reveal animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
   <style>
     /* ------------------------------------------------ */
     /* MAXIMALIST DESIGN SYSTEM & COLOR TOKENS          */
@@ -1122,6 +1126,15 @@
         box-shadow: none !important;
         border: 1px solid #ccc !important;
       }
+      .wow {
+        visibility: visible !important;
+        animation: none !important;
+      }
+    }
+
+    /* WOW.js Scroll Animation Defaults */
+    .wow {
+      visibility: hidden;
     }
   </style>
 </head>
@@ -1206,7 +1219,7 @@
 
   <div class="container" id="dashboard">
     <!-- Hero Banner with Standardized Cohort Presets -->
-    <div class="hero-banner">
+    <div class="hero-banner wow animate__fadeInDown" data-wow-duration="0.8s">
       <div class="hero-text">
         <h1>Cardiovascular Risk & XAI Attribution</h1>
         <p>Real-time machine learning inference with SHAP mathematical interpretability, genetic weighting, and live telemetry for clinical triage.</p>
@@ -1229,7 +1242,7 @@
     <div class="dashboard-grid">
       
       <!-- Left Column: Interactive Patient Input Form -->
-      <div class="glass-card" id="vitalsSection">
+      <div class="glass-card wow animate__fadeInLeft" id="vitalsSection" data-wow-duration="0.8s">
         <div class="card-title">
           <span>📋 Patient Biomarkers & Clinical Calibration</span>
           <span class="card-badge">21-Feature Vector</span>
@@ -1353,7 +1366,7 @@
         </div>
 
         <!-- Counterfactual "What-If" Simulator -->
-        <div class="sim-box">
+        <div class="sim-box wow animate__fadeInUp" data-wow-delay="0.15s">
           <div class="sim-header">
             <span>🎛️ Counterfactual "What-If" Therapeutic Simulation</span>
           </div>
@@ -1389,7 +1402,7 @@
       </div>
 
       <!-- Right Column: Real-Time Diagnostic Dashboard -->
-      <div class="glass-card">
+      <div class="glass-card wow animate__fadeInRight" data-wow-duration="0.8s">
         <div class="card-title">
           <span>🧠 AI Diagnostic Inference & Risk Stratification</span>
           <span class="card-badge">Calibrated ASCVD</span>
@@ -1397,17 +1410,17 @@
 
         <!-- 3-Box KPI Row -->
         <div class="kpi-row">
-          <div class="kpi-box">
+          <div class="kpi-box wow animate__fadeInUp" data-wow-delay="0.1s">
             <div class="kpi-label">ML Confidence</div>
             <div class="kpi-num" style="color:var(--primary);" id="lblConfidence">94.8%</div>
             <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700;">Calibrated Ensemble</div>
           </div>
-          <div class="kpi-box">
+          <div class="kpi-box wow animate__fadeInUp" data-wow-delay="0.2s">
             <div class="kpi-label">Biological Heart Age</div>
             <div class="kpi-num" style="color:var(--accent);" id="lblHeartAge">79 yrs</div>
             <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700;" id="lblHeartAgeSub">+11 yrs acceleration</div>
           </div>
-          <div class="kpi-box">
+          <div class="kpi-box wow animate__fadeInUp" data-wow-delay="0.3s">
             <div class="kpi-label">Health Index</div>
             <div class="kpi-num" style="color:var(--success);" id="lblHealthIdx">28/100</div>
             <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700;">Composite Score</div>
@@ -1415,7 +1428,7 @@
         </div>
 
         <!-- Calibrated Semi-Circle Risk Gauge (Scaled to 280px) -->
-        <div class="gauge-wrapper">
+        <div class="gauge-wrapper wow animate__zoomIn" data-wow-delay="0.2s">
           <div class="gauge-circle">
             <svg class="gauge-svg" viewBox="0 0 240 130">
               <path class="gauge-bg" d="M 25 125 A 95 95 0 0 1 215 125" />
@@ -1427,7 +1440,7 @@
         </div>
 
         <!-- Heart Biological Twin Container -->
-        <div class="heart-twin-container">
+        <div class="heart-twin-container wow animate__fadeInUp" data-wow-delay="0.25s">
           <div style="display:flex; align-items:center; gap:16px;">
             <div class="heart-3d-box">
               <span class="heart-3d-glyph" id="heartGlyph">🫀</span>
@@ -1441,7 +1454,7 @@
         </div>
 
         <!-- Live Lead-II Hospital Telemetry Monitor -->
-        <div class="telemetry-container" id="telemetryCard">
+        <div class="telemetry-container wow animate__fadeInUp" id="telemetryCard" data-wow-delay="0.3s">
           <div class="telemetry-header">
             <span class="telemetry-title">⚡ Continuous Lead-II Telemetry Monitor (Real-Time Sweep)</span>
             <span style="font-size:0.75rem; color:#10b981; font-weight:800; letter-spacing:0.05em;">25 mm/sec &bull; 10 mm/mV</span>
@@ -1450,7 +1463,7 @@
         </div>
 
         <!-- Explainable AI (SHAP Waterfall Attribution) -->
-        <div class="xai-section" id="xaiBreakdown">
+        <div class="xai-section wow animate__fadeInUp" id="xaiBreakdown" data-wow-delay="0.35s">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.9rem;">
             <span style="font-weight:800; font-size:1.08rem; font-family:var(--font-heading);">⚖️ SHAP Local Feature Impact Attributions</span>
             <span style="font-size:0.8rem; color:var(--text-dim); font-weight:700;">Base E[f(x)] = 21.0%</span>
@@ -1462,7 +1475,7 @@
         </div>
 
         <!-- Biomarker Radar Chart -->
-        <div style="margin-top: 1.8rem;">
+        <div class="wow animate__fadeInUp" data-wow-delay="0.4s" style="margin-top: 1.8rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
             <span style="font-weight:800; font-size:1.05rem; font-family:var(--font-heading);">🕸️ Physiological Biomarker Radar</span>
             <span style="font-size:0.8rem; color:var(--text-dim); font-weight:700;">Normalized Bounds</span>
@@ -1473,7 +1486,7 @@
         </div>
 
         <!-- Automated Clinical SBAR Note -->
-        <div class="clinical-narrative" id="clinicalNarrative">
+        <div class="clinical-narrative wow animate__fadeInUp" id="clinicalNarrative" data-wow-delay="0.45s">
           <!-- Populated dynamically -->
         </div>
 
@@ -2011,11 +2024,28 @@
     })();
 
     // ------------------------------------------------
-    // INITIALIZATION ON LOAD
+    // INITIALIZATION ON LOAD & WOW.JS
     // ------------------------------------------------
+    let wowInstance = null;
     window.addEventListener('DOMContentLoaded', () => {
       syncInputs();
       updateCalculations();
+
+      if (typeof WOW !== 'undefined') {
+        wowInstance = new WOW({
+          boxClass: 'wow',
+          animateClass: 'animate__animated',
+          offset: 40,
+          mobile: true,
+          live: true
+        });
+        wowInstance.init();
+      } else {
+        // Fallback for offline environments or ad-blockers
+        document.querySelectorAll('.wow').forEach(el => {
+          el.style.visibility = 'visible';
+        });
+      }
     });
   </script>
 </body>

@@ -19,13 +19,16 @@
     width: 8px;
     height: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--sb-track);
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--sb-thumb);
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-blue);
 }
@@ -140,13 +143,27 @@ button[aria-label="Collapse sidebar"]:hover {
 }
 
 /* Hide default Streamlit deploy toolbar, top decoration line, and footer */
-#MainMenu { visibility: hidden; }
-[data-testid="stToolbar"] { visibility: hidden; }
-[data-testid="stDecoration"] { display: none; }
-footer { visibility: hidden; }
+#MainMenu {
+    visibility: hidden;
+}
+
+[data-testid="stToolbar"] {
+    visibility: hidden;
+}
+
+[data-testid="stDecoration"] {
+    display: none;
+}
+
+footer {
+    visibility: hidden;
+}
 
 /* Headings Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Outfit', sans-serif !important;
     letter-spacing: -0.02em;
     font-weight: 700;
@@ -322,7 +339,7 @@ h1, h2, h3, h4 {
 }
 
 /* Streamlit Button Overrides */
-div.stButton > button,
+div.stButton>button,
 div.stButton button,
 div[data-testid="stDownloadButton"] button,
 div[data-testid="stPopover"] button,
@@ -340,8 +357,8 @@ button[data-testid="stPopoverButton"] {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
 }
 
-div.stButton > button:hover,
-div.stButton > button[kind="secondary"]:hover,
+div.stButton>button:hover,
+div.stButton>button[kind="secondary"]:hover,
 div.stButton button:hover,
 div[data-testid="stDownloadButton"] button:hover,
 div[data-testid="stPopover"] button:hover,
@@ -354,7 +371,7 @@ button[data-testid="stPopoverButton"]:hover {
     box-shadow: 0 8px 24px var(--glow-color) !important;
 }
 
-div.stButton > button:active,
+div.stButton>button:active,
 div.stButton button:active,
 div[data-testid="stDownloadButton"] button:active,
 div[data-testid="stPopover"] button:active,
@@ -362,12 +379,12 @@ button[data-testid="stBaseButton-secondary"]:active {
     transform: translateY(2px) scale(0.98) !important;
 }
 
-div.stButton > button[kind="primary"],
+div.stButton>button[kind="primary"],
 div.stButton button[kind="primary"],
 div[data-testid="stDownloadButton"] button[kind="primary"],
 button[data-testid="stBaseButton-primary"] {
     background: var(--primary-btn-bg) !important;
-    color: #ffffff !important;
+    color: #0c3358 !important;
     border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 14px !important;
     padding: 0.85rem 1.8rem !important;
@@ -379,12 +396,12 @@ button[data-testid="stBaseButton-primary"] {
     transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-div.stButton > button[kind="primary"]:hover,
+div.stButton>button[kind="primary"]:hover,
 div.stButton button[kind="primary"]:hover,
 div[data-testid="stDownloadButton"] button[kind="primary"]:hover,
 button[data-testid="stBaseButton-primary"]:hover {
     background: var(--primary-btn-hover) !important;
-    color: #ffffff !important;
+    color: #182666 !important;
     transform: translateY(-3px) scale(1.02) !important;
     box-shadow: 0 10px 32px var(--glow-color) !important;
 }
@@ -395,17 +412,11 @@ button[data-testid="stBaseButton-primary"]:hover {
 .header-actions-container button,
 .header-actions-container div[data-testid="stPopover"] button,
 .header-actions-container button[data-testid="stBaseButton-secondary"],
-.header-actions-container button[data-testid="stPopoverButton"],
-div[data-testid="column"]:has(.alert-btn-marker) button,
-div[data-testid="column"]:has(.alert-btn-marker) [data-testid="stPopover"] button,
-div[data-testid="column"]:has(.alert-btn-marker) button[data-testid="stBaseButton-secondary"],
-div[data-testid="column"]:has(.alert-btn-marker) button[data-testid="stPopoverButton"],
-div[data-testid="column"]:has(.theme-btn-marker) button,
-div[data-testid="column"]:has(.theme-btn-marker) button[data-testid="stBaseButton-secondary"] {
+.header-actions-container button[data-testid="stPopoverButton"] {
     background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
-    background-color: #10b981 !important;
+    background-color: #21356c !important;
     border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
-    color: #ffffff !important;
+    color: #162f5a !important;
     border-radius: 14px !important;
     font-family: 'Outfit', sans-serif !important;
     font-weight: 700 !important;
@@ -416,22 +427,14 @@ div[data-testid="column"]:has(.theme-btn-marker) button[data-testid="stBaseButto
 }
 
 .header-actions-container button *,
-.header-actions-container div[data-testid="stPopover"] button *,
-div[data-testid="column"]:has(.alert-btn-marker) button *,
-div[data-testid="column"]:has(.alert-btn-marker) button p,
-div[data-testid="column"]:has(.alert-btn-marker) button span,
-div[data-testid="column"]:has(.theme-btn-marker) button *,
-div[data-testid="column"]:has(.theme-btn-marker) button p,
-div[data-testid="column"]:has(.theme-btn-marker) button span {
+.header-actions-container div[data-testid="stPopover"] button * {
     color: #ffffff !important;
     fill: #ffffff !important;
     font-weight: 700 !important;
 }
 
 .header-actions-container button:hover,
-.header-actions-container div[data-testid="stPopover"] button:hover,
-div[data-testid="column"]:has(.alert-btn-marker) button:hover,
-div[data-testid="column"]:has(.theme-btn-marker) button:hover {
+.header-actions-container div[data-testid="stPopover"] button:hover {
     background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
     background-color: #34d399 !important;
     border-color: #ffffff !important;
@@ -476,7 +479,8 @@ button div[data-testid="stMarkdownContainer"] div {
 }
 
 div[data-testid="stCaptionContainer"] p,
-.stCaption, small {
+.stCaption,
+small {
     color: var(--text-muted) !important;
     font-weight: 500 !important;
 }
@@ -591,7 +595,7 @@ div[data-testid="stTextArea"] textarea:focus {
 }
 
 /* BaseWeb Selectbox & Dropdown */
-div[data-baseweb="select"] > div {
+div[data-baseweb="select"]>div {
     background-color: var(--card-sub-bg) !important;
     border: 1px solid var(--card-border) !important;
     border-radius: 12px !important;
@@ -658,7 +662,7 @@ div[data-baseweb="popover"] li:hover {
     margin-bottom: 8px !important;
 }
 
-[data-testid="stChatMessage"] p, 
+[data-testid="stChatMessage"] p,
 [data-testid="stChatMessage"] span,
 [data-testid="stChatMessage"] div {
     color: var(--text-main) !important;
@@ -682,7 +686,8 @@ div[data-baseweb="popover"] li:hover {
     background-color: var(--card-sub-bg) !important;
 }
 
-[data-testid="stAlert"] p, [data-testid="stAlert"] span {
+[data-testid="stAlert"] p,
+[data-testid="stAlert"] span {
     color: var(--text-main) !important;
     font-weight: 600 !important;
 }
@@ -702,11 +707,25 @@ div[data-testid="stRadio"] label span {
 
 /* Pulse Animation */
 @keyframes heart-pulse {
-    0% { transform: scale(1); }
-    15% { transform: scale(1.15); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    70% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    70% {
+        transform: scale(1);
+    }
 }
 
 .pulse-badge {
@@ -803,9 +822,11 @@ div[data-testid="stRadio"] label span {
     .kpi-row-container [data-testid="stHorizontalBlock"] {
         grid-template-columns: repeat(3, 1fr) !important;
     }
+
     .top-nav-container [data-testid="stHorizontalBlock"] {
         grid-template-columns: repeat(3, 1fr) !important;
     }
+
     .dashboard-main-grid [data-testid="stHorizontalBlock"] {
         grid-template-columns: 1fr !important;
     }
@@ -816,9 +837,11 @@ div[data-testid="stRadio"] label span {
     .kpi-row-container [data-testid="stHorizontalBlock"] {
         grid-template-columns: repeat(2, 1fr) !important;
     }
+
     .dashboard-main-grid [data-testid="stHorizontalBlock"] {
         grid-template-columns: 1fr !important;
     }
+
     .responsive-two-col [data-testid="stHorizontalBlock"] {
         grid-template-columns: 1fr !important;
     }
@@ -856,13 +879,18 @@ div[data-testid="stRadio"] label span {
         font-size: 1.35rem !important;
         line-height: 1.25 !important;
     }
+
     h2 {
         font-size: 1.2rem !important;
     }
+
     h3 {
         font-size: 1.08rem !important;
     }
-    p, span, label {
+
+    p,
+    span,
+    label {
         font-size: 0.88rem !important;
     }
 
@@ -871,9 +899,11 @@ div[data-testid="stRadio"] label span {
         border-radius: 16px !important;
         min-height: 100px !important;
     }
+
     .kpi-val {
         font-size: 1.75rem !important;
     }
+
     .kpi-label {
         font-size: 0.68rem !important;
     }
@@ -900,7 +930,7 @@ div[data-testid="stRadio"] label span {
     }
 
     /* Touch Targets */
-    div.stButton > button {
+    div.stButton>button {
         min-height: 42px !important;
         padding: 0.5rem 0.8rem !important;
         font-size: 0.85rem !important;
@@ -913,7 +943,7 @@ div[data-testid="stRadio"] label span {
 
     div[data-testid="stTextInput"] input,
     div[data-testid="stNumberInput"] input,
-    div[data-baseweb="select"] > div {
+    div[data-baseweb="select"]>div {
         min-height: 42px !important;
         font-size: 0.88rem !important;
     }
@@ -951,4 +981,3 @@ div[data-testid="stRadio"] label span {
         font-size: 1.2rem !important;
     }
 }
-
